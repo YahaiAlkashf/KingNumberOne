@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+import Header from './Components/Header';
+import Sidebar from './Components/Sidebar';
 import { Head } from '@inertiajs/react';
 
 export default function AdminLayout({ children, hideLayout = false }) {
