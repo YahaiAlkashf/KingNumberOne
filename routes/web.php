@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('admin/index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -41,6 +41,9 @@ Route::get('/service', function () {
     return Inertia::render('Services');
 });
 
+
+Route::middleware('auth')->group(function () {
+
 Route::get('/admin', function () {
     return Inertia::render('admin/index');
 });
@@ -55,6 +58,7 @@ Route::get('/admin/contact', function () {
 });
 Route::get('/admin/services', function () {
     return Inertia::render('admin/Services');
+});
 });
 
 
