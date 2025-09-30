@@ -38,45 +38,44 @@ const Header = () => {
                         <li><Link href="/aboutus">{t('من نحن')}</Link></li>
                         <li><Link href="/service">{t('خدماتنا')}</Link></li>
                         <li><Link href="/contact">{t('اتصل بنا')}</Link></li>
-                    </ul>
-                    <div className="flex items-center gap-4">
-                                    <div className="relative">
-                                        <select
-                                        value={i18n.language}
-                                    onChange={(e) => changeLanguage(e.target.value)}
-                                            className="appearance-none w-36 px-4 py-2 pr-8 rounded-xl
-                                       border border-gray-300 dark:border-gray-700
-                                       bg-white dark:bg-gray-800
-                                       text-gray-700 dark:text-gray-200 text-sm font-medium
-                                       shadow-md transition duration-200
-                                       hover:border-[#4F2BED]
-                                       focus:ring-2 focus:ring-[#4F2BED] focus:outline-none"
-                                        >
-                                            <option
-                                                value="ar"
-                                                className="py-2 px-3 bg-white dark:bg-gray-800 hover:bg-[#4F2BED] hover:text-white"
+                            <div className="flex items-center justify-center gap-4">
+                                <div className="relative ">
+                                    <select
+                                            value={i18n.language}
+                                        onChange={(e) => changeLanguage(e.target.value)}
+                                                className="appearance-none w-36 px-4 py-2 pr-8 rounded-xl
+                                        border border-gray-300 dark:border-gray-700
+                                         bg-gray-800
+                                         text-gray-200 text-sm font-medium
+                                        shadow-md transition duration-200
+                                        hover:border-[#4F2BED]
+                                        focus:ring-2 focus:ring-[#4F2BED] focus:outline-none"
                                             >
-                                                🇪🇬 {t("عربي")}
-                                            </option>
-                                            <option
-                                                value="en"
-                                                className="py-2 px-3 bg-white dark:bg-gray-800 hover:bg-[#4F2BED] hover:text-white"
-                                            >
-                                                🇬🇧 {t("English")}
-                                            </option>
-                                            <option
-                                                value="tr"
-                                                className="py-2 px-3 bg-white dark:bg-gray-800 hover:bg-[#4F2BED] hover:text-white"
-                                            >
-                                                🇬🇧 {t("tr")}
-                                            </option>
-                                        </select>
-                                        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">
-                                            ▼
-                                        </span>
-                                    </div>
+                                                <option
+                                                    value="ar"
+                                                    className="py-2 px-3  bg-gray-800 hover:bg-[#4F2BED] hover:text-white"
+                                                >
+                                                    🇪🇬 {t("عربي")}
+                                                </option>
+                                                <option
+                                                    value="en"
+                                                    className="py-2 px-3  bg-gray-800 hover:bg-[#4F2BED] hover:text-white"
+                                                >
+                                                    🇬🇧 {t("English")}
+                                                </option>
+                                                <option
+                                                    value="tr"
+                                                    className="py-2 px-3  bg-gray-800 hover:bg-[#4F2BED] hover:text-white"
+                                                >
+                                                    🇬🇧 {t("tr")}
+                                                </option>
+                                            </select>
 
-                                </div>
+                                        </div>
+
+                            </div>
+                    </ul>
+
                 </div>
             </div>
         </header>
