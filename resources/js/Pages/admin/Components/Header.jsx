@@ -51,7 +51,7 @@ export default function Header({ isOpen, setIsOpen }) {
         >
             <div>
                 <h1 className="text-2xl font-semibold text-[#4F2BED] dark:text-primary-dark">
-                    {auth?.user?.company?.company_name || t("سيستمى")}
+                   KingNumberOne
                 </h1>
             </div>
             <div className="flex items-center gap-4">
