@@ -8,6 +8,7 @@ import "./Pages/i18n";
 import { ThemeProvider } from './Context/ThemeContext';
 
 
+
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -22,6 +23,7 @@ createInertiaApp({
 
         root.render(
             <ThemeProvider>
+                
                 <App {...props} />
             </ThemeProvider>
         );

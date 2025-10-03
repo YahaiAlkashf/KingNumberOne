@@ -3,6 +3,7 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { useTranslation } from 'react-i18next';
 import { Link, usePage, Head } from "@inertiajs/react";
+import ThreeBackground from '@/Components/ThreeBackground';
 
 function Home() {
     const { t, i18n  } = useTranslation();
@@ -87,7 +88,7 @@ function Home() {
             observer.observe(element);
         });
 
-        createFloatingStars();
+        // createFloatingStars();
 
         const statNumbers = document.querySelectorAll('.stat-number');
         statNumbers.forEach(stat => {
@@ -145,6 +146,8 @@ function Home() {
     }, []);
 
     return (
+        <>
+        <ThreeBackground />
         <div className="App">
             <Head>
                 <title>KingNumberOne: Programming and Digital Marketing Solutions</title>
@@ -360,8 +363,9 @@ function Home() {
                 </div>
             </section>
 
-            <Footer />
         </div>
+        <Footer />
+        </>
     );
 }
 

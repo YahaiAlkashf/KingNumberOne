@@ -112,17 +112,11 @@ export default function Header({ isOpen, setIsOpen }) {
                     className="h-10 w-10 rounded-full bg-[#4F2BED] flex items-center justify-center
                                 text-white font-bold text-lg shadow"
                 >
-                    {auth.user?.company?.logo !== null ? (
-                        <img
-                            src={`${app_url}/storage/${auth.user?.company?.logo}`}
-                            className="h-full w-full object-cover rounded-full"
-                            alt={`${auth.user?.company?.company_name} logo`}
-                            />
-                    ):(
-                        <>
+
+
                         {initials}
-                        </>
-                    )}
+                        
+
                 </div>
 
                 {/* Logout Button */}

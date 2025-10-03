@@ -4,7 +4,7 @@ import { usePage, Head } from "@inertiajs/react";
 import { all } from "axios";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
+import ThreeBackground from '@/Components/ThreeBackground';
 const ContactUs = () => {
     const { app_url } = usePage().props;
     const { t, i18n } = useTranslation();
@@ -181,73 +181,47 @@ const ContactUs = () => {
     };
     const currentLang = i18n.language;
     return (
-        <div className="contact-page">
+        <>
+         <ThreeBackground />
+        <div className="contact-page p-[20px]">
             <Head>
                 <title>Contact Us - KingNumberOne | Get in Touch</title>
                 <meta name="description" content="Contact KingNumberOne for all your digital marketing and programming needs. Reach out to us for a free consultation and let's start your project today." />
                 <meta name="keywords" content="Contact KingNumberOne, KingNumberOne support, Get in touch, Digital Marketing contact, Programming help, Free consultation" />
             </Head>
-            <Header />
             <div className="space-background">
                 <div className="stars"></div>
                 <div className="nebula"></div>
 
-                <svg
-                    className="star-svg"
-                    width="100"
-                    height="100"
-                    viewBox="0 0 100 100"
-                    style={{ top: "10%", left: "15%" }}
-                >
-                    <path
-                        d="M50 10 L55 40 L85 40 L60 55 L70 85 L50 65 L30 85 L40 55 L15 40 L45 40 Z"
-                        fill="var(--neon-blue)"
-                        className="floating"
-                    />
+                <svg className="star-svg" width="100" height="100" viewBox="0 0 100 100" style={{top: '10%', left: '15%'}}>
+                    <path d="M50 10 L55 40 L85 40 L60 55 L70 85 L50 65 L30 85 L40 55 L15 40 L45 40 Z"
+                          fill="var(--neon-blue)" className="floating" />
                 </svg>
 
-                <svg
-                    className="star-svg"
-                    width="80"
-                    height="80"
-                    viewBox="0 0 80 80"
-                    style={{ top: "70%", left: "80%" }}
-                >
-                    <path
-                        d="M40 5 L44 32 L68 32 L48 44 L56 68 L40 52 L24 68 L32 44 L12 32 L36 32 Z"
-                        fill="var(--nebula-orange)"
-                        className="floating"
-                        style={{ animationDelay: "0.5s" }}
-                    />
+                <svg className="star-svg" width="80" height="80" viewBox="0 0 80 80" style={{top: '70%', left: '80%'}}>
+                    <path d="M40 5 L44 32 L68 32 L48 44 L56 68 L40 52 L24 68 L32 44 L12 32 L36 32 Z"
+                          fill="var(--nebula-orange)" className="floating" style={{animationDelay: '0.5s'}} />
                 </svg>
 
-                <svg
-                    className="star-svg"
-                    width="60"
-                    height="60"
-                    viewBox="0 0 60 60"
-                    style={{ top: "30%", left: "85%" }}
-                >
-                    <path
-                        d="M30 3 L33 24 L51 24 L36 33 L42 51 L30 39 L18 51 L24 33 L9 24 L27 24 Z"
-                        fill="var(--cosmic-purple)"
-                        className="floating"
-                        style={{ animationDelay: "1s" }}
-                    />
+                <svg className="star-svg" width="60" height="60" viewBox="0 0 60 60" style={{top: '30%', left: '85%'}}>
+                    <path d="M30 3 L33 24 L51 24 L36 33 L42 51 L30 39 L18 51 L24 33 L9 24 L27 24 Z"
+                          fill="var(--cosmic-purple)" className="floating" style={{animationDelay: '1s'}} />
                 </svg>
             </div>
 
             <div className="container">
-                <header className="page-header">
-                    <h1 className="logo">KingNumberOne</h1>
-                    <h2 className="page-title glow-text">{t("اتصل بنا")}</h2>
-                    <p className="page-subtitle">
-                        {t(
-                            "نحن هنا للإجابة على جميع استفساراتك وتقديم الحلول المناسبة لاحتياجاتك الرقمية. تواصل معنا اليوم وابدأ رحلتك نحو التميز"
-                        )}
-                    </p>
-                </header>
 
+
+        <Header />
+            <section className="hero">
+                <div className="container">
+                    <h1 className="logo">KingNumberOne</h1>
+                    <h1 className="hero-title">{t("اتصل بنا")}</h1>
+                    <p className="hero-subtitle">                        {t(
+                            "نحن هنا للإجابة على جميع استفساراتك وتقديم الحلول المناسبة لاحتياجاتك الرقمية. تواصل معنا اليوم وابدأ رحلتك نحو التميز"
+                        )}</p>
+                </div>
+            </section>
                 <div className="contact-content">
                     <section className="contact-form">
                         <h3 className="form-title">{t("أرسل رسالة")}</h3>
@@ -539,8 +513,9 @@ const ContactUs = () => {
                         ))}
                 </section>
             </div>
-            <Footer />
         </div>
+            <Footer />
+        </>
     );
 };
 

@@ -5,11 +5,19 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Cairo', sans-serif
+    /* box-sizing: border-box; */
+    font-family: 'Cairo', sans-serif;
 }
-body {
-    padding: 20px;
+    /* body {
+    } */
+    .App{
+        padding: 20px;
+
+    }
+footer {
+    margin: 0;
+    padding: 0;
+
 }
 header {
     padding: 1.5rem 0;
@@ -86,6 +94,7 @@ header {
         flex-direction: column;
         padding: 1rem;
         text-align: center;
+        z-index: 100;
     }
 
     .nav-links.active {
@@ -112,10 +121,17 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
+    padding: 0px;
+}
+
+.footer-column {
+    text-align: center;
+    padding: 1rem;
 }
 .footer-column{
     text-align: center;
     padding: 1rem;
+
 }
 .footer-column h3 {
     font-size: 1.3rem;
@@ -263,7 +279,7 @@ body {
 }
 
 
-.hero {
+.hero ,.page-header {
     /* padding: 6rem 0; */
     text-align: center;
     position: relative;
@@ -694,22 +710,12 @@ body {
 }
 
 .about-page {
-    background-color: var(--cosmic-dark);
-    color: var(--light-text);
     overflow-x: hidden;
     position: relative;
     line-height: 1.6;
 }
 
-.space-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
+
 
 .stars {
     position: absolute;
@@ -744,11 +750,11 @@ body {
     /* padding: 2rem; */
 }
 
-.page-header {
+/* .page-header {
     text-align: center;
     padding: 4rem 0 2rem;
     position: relative;
-}
+} */
 
 .logo {
     font-size: 3.5rem;
@@ -1197,7 +1203,7 @@ body {
   min-height: 100vh;
 }
 
-/* تأثيرات الفضاء في الخلفية */
+
 .space-background {
   position: fixed;
   top: 0;
@@ -1241,7 +1247,7 @@ body {
   /* padding: 2rem; */
 }
 
-/* رأس الصفحة */
+
 .page-header {
   text-align: center;
   padding: 4rem 0 2rem;
@@ -1285,7 +1291,7 @@ body {
   margin: 0 auto;
 }
 
-/* قسم المحتوى الرئيسي */
+
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1714,4 +1720,36 @@ body {
 
 .hover\:shadow-2xl:hover {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+}
+
+
+.background-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/back.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: brightness(50%);
+    z-index: -2;
 }

@@ -3,7 +3,7 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { useTranslation } from 'react-i18next';
 import { usePage } from '@inertiajs/react';
-
+import ThreeBackground from '@/Components/ThreeBackground';
 
 const AboutUs = () => {
     const { t , i18n} = useTranslation();
@@ -146,7 +146,8 @@ const AboutUs = () => {
 
     return (
         <>
-        <div className="about-page">
+        <ThreeBackground />
+        <div className="about-page p-[20px]">
 
             <div className="space-background">
                 <div className="stars"></div>
@@ -171,12 +172,14 @@ const AboutUs = () => {
             <Header />
 
             <div className="container">
-                <header className="page-header">
-                    <h1 className="logo">KingNumberOne</h1>
-                    <h2 className="page-title glow-text">{t("من نحن")}</h2>
-                    <p className="page-subtitle">{t("شركة رائدة في مجال البرمجة والتسويق الإلكتروني، نسعى دائمًا لتحقيق التميز وابتكار حلول رقمية تتحدى التوقعات")}</p>
-                </header>
 
+                            <section className="hero">
+                <div className="container">
+                    <h1 className="logo">KingNumberOne</h1>
+                    <h1 className="hero-title">{t("من نحن")}</h1>
+                    <p className="hero-subtitle">{t("شركة رائدة في مجال البرمجة والتسويق الإلكتروني، نسعى دائمًا لتحقيق التميز وابتكار حلول رقمية تتحدى التوقعات")}</p>
+                </div>
+            </section>
                 <section className="content-section">
                     <div className="content-text">
                         <h3 className="section-title">{t("قصتنا")}</h3>

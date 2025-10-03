@@ -27,7 +27,7 @@ const Header = () => {
         <header>
             <div className="container">
                 <div className="header-content">
-                    <a href="#" className="logo">{t('KingNumberOne')}</a>
+                    <Link href="/" className="logo">{t('KingNumberOne')}</Link>
 
                     <button className="mobile-menu-btn" onClick={toggleMenu}>
                         <i className="fas fa-bars"></i>

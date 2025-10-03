@@ -1,7 +1,7 @@
 import Footer from '@/Components/Footer';
 import Header from '@/Components/Header';
 import { usePage, Head } from '@inertiajs/react';
-
+import ThreeBackground from '@/Components/ThreeBackground';
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -158,12 +158,33 @@ const Services = () => {
     };
 
     return (
-        <div  className="bg-[#0B0C10] text-[#EEEEEE] font-['Cairo'] relative overflow-x-hidden">
+        <>
+         <ThreeBackground />
+        <div  className=" text-[#EEEEEE] p-[20px] font-['Cairo'] relative overflow-x-hidden">
             <Head>
                 <title>Our Services - KingNumberOne | Digital & Marketing Solutions</title>
                 <meta name="description" content="Explore the wide range of digital and marketing services offered by KingNumberOne. From web development to online marketing, we turn your ideas into reality." />
                 <meta name="keywords" content="KingNumberOne Services, Digital Services, Marketing Services, Web Development, Online Marketing, SEO Services, Custom Solutions" />
             </Head>
+             <div className="space-background">
+                <div className="stars"></div>
+                <div className="nebula"></div>
+
+                <svg className="star-svg" width="100" height="100" viewBox="0 0 100 100" style={{top: '10%', left: '15%'}}>
+                    <path d="M50 10 L55 40 L85 40 L60 55 L70 85 L50 65 L30 85 L40 55 L15 40 L45 40 Z"
+                          fill="var(--neon-blue)" className="floating" />
+                </svg>
+
+                <svg className="star-svg" width="80" height="80" viewBox="0 0 80 80" style={{top: '70%', left: '80%'}}>
+                    <path d="M40 5 L44 32 L68 32 L48 44 L56 68 L40 52 L24 68 L32 44 L12 32 L36 32 Z"
+                          fill="var(--nebula-orange)" className="floating" style={{animationDelay: '0.5s'}} />
+                </svg>
+
+                <svg className="star-svg" width="60" height="60" viewBox="0 0 60 60" style={{top: '30%', left: '85%'}}>
+                    <path d="M30 3 L33 24 L51 24 L36 33 L42 51 L30 39 L18 51 L24 33 L9 24 L27 24 Z"
+                          fill="var(--cosmic-purple)" className="floating" style={{animationDelay: '1s'}} />
+                </svg>
+            </div>
             <Header />
             <style>{`
                 @keyframes twinkle { 0% { opacity: 0.5; } 100% { opacity: 1; } }
@@ -176,13 +197,9 @@ const Services = () => {
                 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
                 .faq-item.active .faq-answer { max-height: 500px; padding: 1.5rem; }
                 .faq-item.active .faq-toggle { transform: rotate(45deg); }
-            `}</style>
+                `}</style>
 
-            {/* Background Effects */}
-            <div className="fixed top-0 left-0 w-full h-full z-[-1] overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-full bg-repeat" style={{ backgroundImage: `radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)), radial-gradient(2px 2px at 40px 70px, #00ADB5, rgba(0,0,0,0)), radial-gradient(1px 1px at 90px 40px, #FF6F61, rgba(0,0,0,0)), radial-gradient(1px 1px at 130px 80px, #C700FF, rgba(0,0,0,0))`, backgroundSize: '200px 200px', animation: 'twinkle 8s ease-in-out infinite alternate' }}></div>
-                <div className="absolute w-full h-full" style={{ background: `radial-gradient(circle at 20% 30%, rgba(199, 0, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0, 173, 181, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 70%, rgba(255, 111, 97, 0.1) 0%, transparent 50%)`, animation: 'nebulaFloat 15s ease-in-out infinite alternate' }}></div>
-            </div>
+
 
             <div className="container mx-auto px-4 sm:px-8 py-8">
                 <section ref={sections.hero} className="text-center py-20 relative">
@@ -284,8 +301,9 @@ const Services = () => {
                         ))}
                 </section>
             </div>
-            <Footer />
         </div>
+            <Footer />
+        </>
     );
 };
 

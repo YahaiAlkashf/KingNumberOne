@@ -12,7 +12,7 @@ const Footer = () => {
     const [contactInfo, setContactInfo] = useState([]);
     const {t, i18n} = useTranslation();
     const {app_url} = usePage().props;
-    
+
             const fetchMarketingServices = async () => {
                     try {
                         const response = await axios.get(`${app_url}/marketing-services`);
@@ -57,14 +57,14 @@ const Footer = () => {
             }, [services, marketingServices]);
             const currentLang = i18n.language;
     return (
-        <footer>
+        <footer className="m-0 p-10">
             <div className="container">
                 <div className="footer-content">
                     <div className="footer-column">
                         <h3>{t('KingNumberOne')}</h3>
                         <p>{t('شركة رائدة في مجال البرمجة والتسويق الإلكتروني، نقدم حلولاً رقمية متكاملة تساعد عملك على النمو في العصر الرقمي.')}</p>
                         <div className="social-links">
-                             
+
                     <div className="social-icons">
                         {socialLinks.map((link, index) => (
                             <div key={index}>
@@ -101,7 +101,7 @@ const Footer = () => {
                             </div>
                         ))}
                     </div>
-                            
+
                         </div>
                     </div>
 
@@ -118,7 +118,7 @@ const Footer = () => {
                     <div className="footer-column">
                         <h3>{t('خدماتنا')}</h3>
                         <ul className="footer-links">
-                           
+
                             <>
                                 {allServices.map((allservice,index)=>(
                                     <li key={index} value={allservice.name_ar}>
@@ -126,7 +126,7 @@ const Footer = () => {
                                     </li>
                                     ))}
                             </>
-                          
+
                         </ul>
                     </div>
 
