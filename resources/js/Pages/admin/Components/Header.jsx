@@ -106,19 +106,6 @@ export default function Header({ isOpen, setIsOpen }) {
                     )}
                 </button>
 
-
-                {/* Profile Picture */}
-                <div
-                    className="h-10 w-10 rounded-full bg-[#4F2BED] flex items-center justify-center
-                                text-white font-bold text-lg shadow"
-                >
-
-
-                        {initials}
-                        
-
-                </div>
-
                 {/* Logout Button */}
                 <Link
                     href={route("logout")}
