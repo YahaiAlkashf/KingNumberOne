@@ -67,7 +67,7 @@ const Header = () => {
                                                     value="tr"
                                                     className="py-2 px-3  bg-gray-800 hover:bg-[#4F2BED] hover:text-white"
                                                 >
-                                                    🇬🇧 {t("tr")}
+                                                    🇹🇷 {t("tr")}
                                                 </option>
                                             </select>
 

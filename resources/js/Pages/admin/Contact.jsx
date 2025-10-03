@@ -683,19 +683,6 @@ export default function Contact() {
                             {errors.platform && <p className="text-red-500 text-xs mt-1">{errors.platform[0]}</p>}
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                {t("الاسم")} ({languageOptions.find(l => l.value === currentLang)?.label})
-                            </label>
-                            <input
-                                type="text"
-                                value={formData[`name_${currentLang}`] || ''}
-                                onChange={(e) => setFormData({...formData, [`name_${currentLang}`]: e.target.value})}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200"
-                                placeholder={t("أدخل الاسم")}
-                            />
-                            {errors[`name_${currentLang}`] && <p className="text-red-500 text-xs mt-1">{errors[`name_${currentLang}`][0]}</p>}
-                        </div>
-                        <div className="mb-4">
                             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("الرابط")}</label>
                             <input
                                 type="url"
