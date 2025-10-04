@@ -1,10 +1,11 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from "react-i18next";
+import FloatingButtons from './FloatingButtons';
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [language, setLanguage] = useState("ar");
-
+     const { app_url } = usePage().props;
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -24,10 +25,13 @@ const Header = () => {
         localStorage.setItem("language", language);
     }, [language]);
     return (
+        <>
+
         <header>
             <div className="container">
                 <div className="header-content">
-                    <Link href="/" className="logo">{t('KingNumberOne')}</Link>
+                    <Link href="/" className='flex gap-2' >
+                    <img src="favicon-v2.ico" alt="imag" className='w-20 h-20 rounded-full overflow-hidden'/><h1 className="logo">KingNumberOne</h1></Link>
 
                     <button className="mobile-menu-btn" onClick={toggleMenu}>
                         <i className="fas fa-bars"></i>
@@ -79,6 +83,7 @@ const Header = () => {
                 </div>
             </div>
         </header>
+        </>
     );
 };
 

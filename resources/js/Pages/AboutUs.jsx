@@ -4,7 +4,7 @@ import Footer from '../Components/Footer';
 import { useTranslation } from 'react-i18next';
 import { usePage } from '@inertiajs/react';
 import ThreeBackground from '@/Components/ThreeBackground';
-
+import FloatingButtons from '@/Components/FloatingButtons';
 const AboutUs = () => {
     const { t , i18n} = useTranslation();
     const [ourJourney, setOurJourney] = useState([]);
@@ -307,6 +307,7 @@ const AboutUs = () => {
 
 
         </div>
+        <FloatingButtons />
         <Footer />
         </>
     );

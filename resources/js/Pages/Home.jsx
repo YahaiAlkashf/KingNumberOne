@@ -4,6 +4,7 @@ import Footer from '../Components/Footer';
 import { useTranslation } from 'react-i18next';
 import { Link, usePage, Head } from "@inertiajs/react";
 import ThreeBackground from '@/Components/ThreeBackground';
+import FloatingButtons from '@/Components/FloatingButtons';
 
 function Home() {
     const { t, i18n  } = useTranslation();
@@ -364,6 +365,7 @@ function Home() {
             </section>
 
         </div>
+        <FloatingButtons />
         <Footer />
         </>
     );

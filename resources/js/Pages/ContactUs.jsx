@@ -5,6 +5,7 @@ import { all } from "axios";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import ThreeBackground from '@/Components/ThreeBackground';
+import FloatingButtons from '@/Components/FloatingButtons';
 const ContactUs = () => {
     const { app_url } = usePage().props;
     const { t, i18n } = useTranslation();
@@ -514,6 +515,7 @@ const ContactUs = () => {
                 </section>
             </div>
         </div>
+         <FloatingButtons />
             <Footer />
         </>
     );

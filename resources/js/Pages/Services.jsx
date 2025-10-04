@@ -4,7 +4,7 @@ import { usePage, Head } from '@inertiajs/react';
 import ThreeBackground from '@/Components/ThreeBackground';
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-
+import FloatingButtons from '@/Components/FloatingButtons';
 // Helper to apply reveal-on-scroll animation
 const useRevealOnScroll = (ref) => {
 
@@ -302,6 +302,7 @@ const Services = () => {
                 </section>
             </div>
         </div>
+         <FloatingButtons />
             <Footer />
         </>
     );

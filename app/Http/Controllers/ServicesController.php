@@ -76,7 +76,9 @@ class ServicesController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'فشل في إضافة الخدمة'
+                'message' => 'فشل في إضافة الخدمة',
+                'error' => $e->getMessage()
+
             ], 500);
         }
     }

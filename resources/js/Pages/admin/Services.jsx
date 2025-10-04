@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 export default function Services() {
     const { app_url, auth } = usePage().props;
     const { t } = useTranslation();
-
+    const [imagePreview, setImagePreview] = useState(null);
     // States for Services
     const [services, setServices] = useState([]);
     const [servicesModal, setServicesModal] = useState(false);
@@ -99,6 +99,19 @@ export default function Services() {
         fetchFaqs();
     }, []);
 
+        const handleImageChange = (e, setFormData, formData) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFormData({...formData, image: file});
+
+            // Create preview
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setImagePreview(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
     // Common modal handlers
     const closeModal = () => {
         setServicesModal(false);
@@ -142,14 +155,15 @@ export default function Services() {
     const handleEditService = (service) => {
         setEditingService(service);
         setNewService({
-            name_ar: service.name_ar || "",
-            name_en: service.name_en || "",
-            name_tr: service.name_tr || "",
-            description_ar: service.description_ar || "",
-            description_en: service.description_en || "",
-            description_tr: service.description_tr || "",
-            icon: null
+            name_ar: service.name_ar,
+            name_en: service.name_en,
+            name_tr: service.name_tr,
+            description_ar: service.description_ar,
+            description_en: service.description_en,
+            description_tr: service.description_tr,
+            image: service.image||null
         });
+        setImagePreview(service.image || null);
         setServicesModal(true);
     };
 
@@ -162,8 +176,8 @@ export default function Services() {
             formData.append('description_ar', newService.description_ar);
             formData.append('description_en', newService.description_en);
             formData.append('description_tr', newService.description_tr);
-            if (newService.icon) {
-                formData.append('icon', newService.icon); // تم التصحيح من image إلى icon
+            if (newService.image) {
+                formData.append('image', newService.image);
             }
 
             if (editingService) {
@@ -175,7 +189,7 @@ export default function Services() {
             fetchServices();
         } catch (error) {
             setErrors(error.response?.data?.errors || {});
-            console.log(t("Error saving service:"), error);
+            console.log(error);
         }
     };
 
@@ -570,80 +584,88 @@ export default function Services() {
                 formFields = (
                     <>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("عنوان الخدمة بالعربى")}</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("الاسم بالعربى")}</label>
                             <input
                                 type="text"
-                                value={formData.title_ar}
-                                onChange={(e) => setFormData({...formData, title_ar: e.target.value})}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                                placeholder={t("أدخل عنوان الخدمة بالعربى ")}
+                                value={formData.name_ar}
+                                onChange={(e) => setFormData({...formData, name_ar: e.target.value})}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
-                            {errors.title_ar && <p className="text-red-500 text-xs mt-1">{errors.title_ar[0]}</p>}
+                            {errors.name_ar && <p className="text-red-500 text-xs mt-1 animate-pulse">{errors.name_ar[0]}</p>}
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("عنوان الخدمة بالانجليزى")}</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("الاسم بالانجليزى")}</label>
                             <input
                                 type="text"
-                                value={formData.title_en}
-                                onChange={(e) => setFormData({...formData, title_en: e.target.value})}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                                placeholder={t("أدخل عنوان الخدمة بالانجليزى")}
+                                value={formData.name_en}
+                                onChange={(e) => setFormData({...formData, name_en: e.target.value})}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
-                            {errors.title_en && <p className="text-red-500 text-xs mt-1">{errors.title_en[0]}</p>}
+                            {errors.name_en && <p className="text-red-500 text-xs mt-1 animate-pulse">{errors.name_en[0]}</p>}
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("عنوان الخدمة بالتركى")}</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("الاسم بالتركى")}</label>
                             <input
                                 type="text"
-                                value={formData.title_tr}
-                                onChange={(e) => setFormData({...formData, title_tr: e.target.value})}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                                placeholder={t("أدخل عنوان الخدمة بالتركي")}
+                                value={formData.name_tr}
+                                onChange={(e) => setFormData({...formData, name_tr: e.target.value})}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
-                            {errors.title_tr && <p className="text-red-500 text-xs mt-1">{errors.title_tr[0]}</p>}
+                            {errors.name_tr && <p className="text-red-500 text-xs mt-1 animate-pulse">{errors.name_tr[0]}</p>}
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("وصف الخدمة بالعربى")}</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("الوصف بالعربى")}</label>
                             <textarea
                                 value={formData.description_ar}
                                 onChange={(e) => setFormData({...formData, description_ar: e.target.value})}
-                                rows="4"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                                placeholder={t("أدخل وصف الخدمة بالعربى")}
+                                rows="3"
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
-                            {errors.description_ar && <p className="text-red-500 text-xs mt-1">{errors.description_ar[0]}</p>}
+                            {errors.description_ar && <p className="text-red-500 text-xs mt-1 animate-pulse">{errors.description_ar[0]}</p>}
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("وصف الخدمة بالانجليزى")}</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("الوصف بالانجليزى")}</label>
                             <textarea
                                 value={formData.description_en}
                                 onChange={(e) => setFormData({...formData, description_en: e.target.value})}
-                                rows="4"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                                placeholder={t("أدخل وصف الخدمة بالانجليزى")}
+                                rows="3"
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
-                            {errors.description_en && <p className="text-red-500 text-xs mt-1">{errors.description_en[0]}</p>}
+                            {errors.description_en && <p className="text-red-500 text-xs mt-1 animate-pulse">{errors.description_en[0]}</p>}
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("وصف الخدمة")}</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("الوصف بالتركى")}</label>
                             <textarea
                                 value={formData.description_tr}
                                 onChange={(e) => setFormData({...formData, description_tr: e.target.value})}
-                                rows="4"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                                placeholder={t("أدخل وصف الخدمة بالتركى")}
+                                rows="3"
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
-                            {errors.description_tr && <p className="text-red-500 text-xs mt-1">{errors.description_tr[0]}</p>}
+                            {errors.description_tr && <p className="text-red-500 text-xs mt-1 animate-pulse">{errors.description_tr[0]}</p>}
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("أيقونة الخدمة")}</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t("الصورة")}</label>
+                            {imagePreview && (
+                                <div className="mb-2 relative group">
+                                    <img src={imagePreview} alt="Preview" className="w-20 h-20 rounded-lg object-cover shadow-md" />
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setImagePreview(null);
+                                            setFormData({...formData, image: null});
+                                        }}
+                                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                    >
+                                        <XMarkIcon className="h-3 w-3" />
+                                    </button>
+                                </div>
+                            )}
                             <input
                                 type="file"
-                                onChange={(e) => setFormData({...formData, icon: e.target.files[0]})}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                                accept="image/*"
+                                onChange={(e) => handleImageChange(e, setFormData, formData)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 dark:bg-gray-600 dark:text-gray-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
-                            {errors.icon && <p className="text-red-500 text-xs mt-1">{errors.icon[0]}</p>}
+                            {errors.image && <p className="text-red-500 text-xs mt-1 animate-pulse">{errors.image[0]}</p>}
                         </div>
                     </>
                 );
