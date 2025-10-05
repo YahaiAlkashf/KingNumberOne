@@ -205,6 +205,7 @@ useEffect(() => {
     return (
         <>
          <ThreeBackground />
+        <Header /> 
         <div className="contact-page p-[20px]">
             <Head>
                 <title>Contact Us - KingNumberOne | Get in Touch</title>
@@ -231,10 +232,9 @@ useEffect(() => {
                 </svg>
             </div>
 
-            <div className="container">
+            <div className="container !mt-28">
 
 
-        <Header />
             <section className="hero">
                 <div className="container">
                     <h1 className="logo">KingNumberOne</h1>

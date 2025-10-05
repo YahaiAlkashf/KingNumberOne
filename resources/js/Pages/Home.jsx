@@ -149,7 +149,8 @@ function Home() {
     return (
         <>
         <ThreeBackground />
-        <div className="App">
+        <Header />
+        <div className="App !mt-28">
             <Head>
                 <title>KingNumberOne: Programming and Digital Marketing Solutions</title>
                 <meta name="description" content="KingNumberOne offers integrated digital solutions, combining creativity and technology to achieve your business goals. We specialize in programming and e-marketing." />
@@ -175,7 +176,6 @@ function Home() {
                 </svg>
             </div>
 
-            <Header />
 
 
             <section className="hero">
@@ -234,13 +234,15 @@ function Home() {
                     <div className="features-grid">
                         {whyChooseUs.map(item=>(
                         <div className="feature-item">
-                            <div className="feature-icon">
                                 {item.image ? (
-                                    <img src={`${app_url}/storage/${item.image}`} alt="" width={"100%"} height={"100%"}/>
+                                    <div className="feature-icon">
+                                    <img src={`${app_url}/storage/${item.image}`} alt=""  className="!h-52 !w-80" />
+                                    </div>
                                 ) : (
-                                    <i className="fas fa-rocket"></i>
-                                    )}
-                            </div>
+                                    <div className="feature-icon">
+                                         <i className="fas fa-rocket" className="!h-[70px] !w-[70px]"></i>
+                                      </div>
+                                )}
                             <h3 className="feature-title">{currentLang === 'ar' ? item.name_ar : currentLang === 'en' ? item.name_en : item.name_tr }</h3>
                             <p>{currentLang === 'ar' ? item.description_ar : currentLang === 'en' ? item.description_en : item.description_tr }</p>
                         </div>

@@ -150,16 +150,17 @@ const AboutUs = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = document.documentElement.scrollTop > 200 || document.body.scrollTop > 200;
-      setShowButton(scrolled);
+        const scrolled = document.documentElement.scrollTop > 200 || document.body.scrollTop > 200;
+        setShowButton(scrolled);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-    return (
-        <>
+  return (
+      <>
         <ThreeBackground />
+      <Header />
         <div className="about-page p-[20px]">
 
             <div className="space-background">
@@ -182,11 +183,10 @@ const AboutUs = () => {
                 </svg>
             </div>
 
-            <Header />
 
-            <div className="container">
+            <div className="container !mt-28">
 
-                            <section className="hero">
+            <section className="hero">
                 <div className="container">
                     <h1 className="logo">KingNumberOne</h1>
                     <h1 className="hero-title">{t("من نحن")}</h1>

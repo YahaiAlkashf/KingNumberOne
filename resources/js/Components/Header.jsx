@@ -28,7 +28,7 @@ const Header = () => {
         <>
 
         <header>
-            <div className="container">
+            <div className="container  fixed !px-5">
                 <div className="header-content">
                     <Link href="/" className='flex gap-2 justify-center items-center' >
                     <img src="1.png" alt="imag" className='w-15 h-10 md:w-20 md:h-16  '/>

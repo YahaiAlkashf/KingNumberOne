@@ -168,14 +168,15 @@ useEffect(() => {
   };
 
   window.addEventListener("scroll", handleScroll);
-
+  
   return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
+      window.removeEventListener("scroll", handleScroll);
+    };
 }, []);
     return (
         <>
          <ThreeBackground />
+        <Header />
         <div  className=" text-[#EEEEEE] p-[20px] font-['Cairo'] relative overflow-x-hidden">
             <Head>
                 <title>Our Services - KingNumberOne | Digital & Marketing Solutions</title>
@@ -201,7 +202,6 @@ useEffect(() => {
                           fill="var(--cosmic-purple)" className="floating" style={{animationDelay: '1s'}} />
                 </svg>
             </div>
-            <Header />
             <style>{`
                 @keyframes twinkle { 0% { opacity: 0.5; } 100% { opacity: 1; } }
                 @keyframes nebulaFloat { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-20px, 10px) scale(1.05); } }
