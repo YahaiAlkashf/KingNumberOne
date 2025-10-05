@@ -20,7 +20,7 @@ export default function FloatingButtons() {
     return (
         <div style={{
             position: 'fixed',
-            bottom: '95px', 
+            bottom: '100px', 
             right: '30px',
             zIndex: 99999,
             display: 'flex',
