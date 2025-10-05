@@ -21,15 +21,33 @@ const Header = () => {
 
 
 
-    useEffect(() => {
-        localStorage.setItem("language", language);
-    }, [language]);
-    return (
-        <>
+    const [scrolled, setScrolled] = useState(false);
 
-        <header>
-            <div className="container  fixed !px-5">
-                <div className="header-content">
+    useEffect(() => {
+        const handleScroll = () => {
+            const isScrolled = window.scrollY > 10;
+            if (isScrolled !== scrolled) {
+                setScrolled(isScrolled);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [scrolled]);
+
+    const navClasses = scrolled
+        ? 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-100 dark:border-gray-700'
+        : 'bg-transparent border-b border-transparent';
+
+
+    return (
+        <nav className={`fixed w-full z-50 top-0 start-0 transition-all duration-300 ${navClasses}`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-16">
+
                     <Link href="/" className='flex gap-2 justify-center items-center' >
                     <img src="1.png" alt="imag" className='w-15 h-10 md:w-20 md:h-16  '/>
                     <h1 className="logo !text-[34px] !my-6">KingNumberOne</h1>
@@ -39,7 +57,7 @@ const Header = () => {
                         <i className="fas fa-bars"></i>
                     </button>
 
-                    <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+                    <ul className={`nav-links ${isMenuOpen ? 'active' : ''} flex items-center justify-center gap-4`}>
                         <li><Link href="/">{t('الرئيسية')}</Link></li>
                         <li><Link href="/aboutus">{t('من نحن')}</Link></li>
                         <li><Link href="/service">{t('خدماتنا')}</Link></li>
@@ -84,8 +102,8 @@ const Header = () => {
 
                 </div>
             </div>
-        </header>
-        </>
+        </nav>
+
     );
 };
 
