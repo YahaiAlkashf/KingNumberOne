@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, usePage, Head } from "@inertiajs/react";
 import ThreeBackground from '@/Components/ThreeBackground';
 import FloatingButtons from '@/Components/FloatingButtons';
+import ButtomTop from '@/Components/ButtomTop';
 
 function Home() {
     const { t, i18n  } = useTranslation();
@@ -13,7 +14,7 @@ function Home() {
         const [whyChooseUs, setWhyChooseUs] = useState([]);
         const [projects, setProjects] = useState([]);
         const [socialLinks, setSocialLinks] = useState([]);
-
+        const [showButton ,setShowButton] = useState(false);
         const {app_url} = usePage().props;
         const fetchServices = async () => {
             try {
@@ -145,7 +146,22 @@ function Home() {
             observer.disconnect();
         };
     }, []);
+useEffect(() => {
+  const handleScroll = () => {
+    console.log("Scroll Y:", window.scrollY);
+    if (window.scrollY > 200) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  };
 
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+}, []);
     return (
         <>
         <ThreeBackground />
@@ -368,6 +384,7 @@ function Home() {
 
         </div>
         <FloatingButtons />
+      {showButton && <ButtomTop />}
         <Footer />
         </>
     );
