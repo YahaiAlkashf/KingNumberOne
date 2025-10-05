@@ -30,8 +30,10 @@ const Header = () => {
         <header>
             <div className="container">
                 <div className="header-content">
-                    <Link href="/" className='flex gap-2' >
-                    <img src="favicon-v2.ico" alt="imag" className='w-20 h-20 rounded-full overflow-hidden'/><h1 className="logo">KingNumberOne</h1></Link>
+                    <Link href="/" className='flex gap-2 justify-center items-center' >
+                    <img src="1.png" alt="imag" className='w-15 h-10 md:w-20 md:h-16  '/>
+                    <h1 className="logo !text-[34px] !my-6">KingNumberOne</h1>
+                    </Link>
 
                     <button className="mobile-menu-btn" onClick={toggleMenu}>
                         <i className="fas fa-bars"></i>

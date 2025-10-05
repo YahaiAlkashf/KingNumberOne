@@ -5,6 +5,7 @@ import ThreeBackground from '@/Components/ThreeBackground';
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import FloatingButtons from '@/Components/FloatingButtons';
+import ButtomTop from '@/Components/ButtomTop';
 // Helper to apply reveal-on-scroll animation
 const useRevealOnScroll = (ref) => {
 
@@ -79,7 +80,7 @@ const Services = () => {
         const {app_url} = usePage().props;
         const [ourNumbers, setOurNumbers] = useState([]);
         const [socialLinks, setSocialLinks] = useState([]);
-
+          const [showButton ,setShowButton] = useState(false);
        const fetchServices = async () => {
         try {
             const response = await axios.get(`${app_url}/services`);
@@ -156,7 +157,22 @@ const Services = () => {
     const toggleFaq = (index) => {
         setActiveFaq(activeFaq === index ? null : index);
     };
+useEffect(() => {
+  const handleScroll = () => {
+    console.log("Scroll Y:", window.scrollY);
+    if (window.scrollY > 200) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  };
 
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
     return (
         <>
          <ThreeBackground />
@@ -303,6 +319,7 @@ const Services = () => {
             </div>
         </div>
          <FloatingButtons />
+          {showButton && <ButtomTop />}
             <Footer />
         </>
     );

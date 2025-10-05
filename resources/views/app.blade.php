@@ -8,7 +8,7 @@
         <meta name="description" content="KingNumberOne offers integrated digital solutions, combining creativity and technology to achieve your business goals. We specialize in programming and e-marketing." />
         <meta name="keywords" content="Digital Marketing, Programming, Web Development, E-marketing, SEO, KingNumberOne, Digital Solutions, Web Design, Online Advertising" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon-v2.ico') }}">
-<meta name="google-site-verification" content="ImYgKC46S55m8ePgU6tcMr695J-F5yK5kKsTN8J2qEU" />
+        <meta name="google-site-verification" content="ImYgKC46S55m8ePgU6tcMr695J-F5yK5kKsTN8J2qEU" />
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

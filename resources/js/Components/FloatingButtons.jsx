@@ -1,23 +1,37 @@
-import React from "react";
+import { usePage } from "@inertiajs/react";
+import React, { useEffect, useState } from "react";
 import { FaArrowUp, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
 export default function FloatingButtons() {
-    const scrollToTop = () => {
-        document.body.scrollTop = 0;
+    const [socialLinks, setSocialLinks] = useState([]);
+    const {app_url} = usePage().props;
+    const fetchSocialLinks = async () => {
+        try {
+            const response = await axios.get(`${app_url}/social-links`);
+            setSocialLinks(response.data.socialLinks);
+        } catch (error) {
+            console.log(t("Error fetching social links:"), error);
+        }
     };
+    useEffect(() => {
+        fetchSocialLinks();
+    }, []);
 
     return (
         <div style={{
             position: 'fixed',
-            bottom: '50px',
+            bottom: '60px', 
             right: '30px',
             zIndex: 99999,
             display: 'flex',
             flexDirection: 'column',
             gap: '12px'
         }}>
+             {socialLinks.map((link, index) => (
+                <div key={index}>
+                {link.platform === "whatsapp" && (
             <a
-                href="https://wa.me/1234567890"
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -36,10 +50,11 @@ export default function FloatingButtons() {
             >
                 <FaWhatsapp />
             </a>
+                )}
 
-          
+          {link.platform === "facebook" && (
             <a
-                href="https://facebook.com"
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -58,27 +73,9 @@ export default function FloatingButtons() {
             >
                 <FaFacebook />
             </a>
-
-           
-            <button
-                onClick={scrollToTop}
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '60px',
-                    height: '60px',
-                    borderRadius: '50%',
-                    backgroundColor: '#EF4444',
-                    color: 'white',
-                    border: 'none',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-                    fontSize: '20px'
-                }}
-            >
-                <FaArrowUp />
-            </button>
+          )}
+            </div>
+             ))}
         </div>
     );
 }

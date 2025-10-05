@@ -5,6 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { usePage } from '@inertiajs/react';
 import ThreeBackground from '@/Components/ThreeBackground';
 import FloatingButtons from '@/Components/FloatingButtons';
+import ButtomTop from '@/Components/ButtomTop';
+import axios from 'axios';
+import { FaArrowUp, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 const AboutUs = () => {
     const { t , i18n} = useTranslation();
     const [ourJourney, setOurJourney] = useState([]);
@@ -143,7 +146,17 @@ const AboutUs = () => {
             observer.disconnect();
         };
     }, []);
+  const [showButton, setShowButton] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = document.documentElement.scrollTop > 200 || document.body.scrollTop > 200;
+      setShowButton(scrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
     return (
         <>
         <ThreeBackground />
@@ -304,10 +317,13 @@ const AboutUs = () => {
                         ))}
                 </section>
             </div>
-
-
         </div>
         <FloatingButtons />
+         
+            
+                 {showButton && <ButtomTop />}
+       
+
         <Footer />
         </>
     );

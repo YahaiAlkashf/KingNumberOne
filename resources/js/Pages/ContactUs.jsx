@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import ThreeBackground from '@/Components/ThreeBackground';
 import FloatingButtons from '@/Components/FloatingButtons';
+import ButtomTop from "@/Components/ButtomTop";
 const ContactUs = () => {
     const { app_url } = usePage().props;
     const { t, i18n } = useTranslation();
@@ -16,6 +17,7 @@ const ContactUs = () => {
     const [allServices, setAllServices] = useState([]);
     const [marketingServices, setMarketingServices] = useState([]);
     const [success,setSuccess]=useState(false);
+    const [showButton ,setShowButton] = useState(false);
     const fetchSocialLinks = async () => {
         try {
             const response = await axios.get(`${app_url}/social-links`);
@@ -181,6 +183,25 @@ const ContactUs = () => {
         });
     };
     const currentLang = i18n.language;
+useEffect(() => {
+  const handleScroll = () => {
+    console.log("Scroll Y:", window.scrollY);
+    if (window.scrollY > 200) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
+
+
     return (
         <>
          <ThreeBackground />
@@ -515,8 +536,15 @@ const ContactUs = () => {
                 </section>
             </div>
         </div>
-         <FloatingButtons />
-            <Footer />
+        <div></div>
+
+         <FloatingButtons  />
+            {
+                showButton && (
+                    <ButtomTop />
+                )
+            }
+        <Footer />
         </>
     );
 };
