@@ -240,7 +240,7 @@ function Home() {
                                     </div>
                                 ) : (
                                     <div className="feature-icon">
-                                         <i className="fas fa-rocket !h-[70px] !w-[70px]" ></i>
+                                         <i className="fas fa-rocket " ></i>
                                       </div>
                                 )}
                             <h3 className="feature-title">{currentLang === 'ar' ? item.name_ar : currentLang === 'en' ? item.name_en : item.name_tr }</h3>
