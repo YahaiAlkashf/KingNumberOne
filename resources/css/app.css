@@ -445,7 +445,7 @@ body {
     /* width: 70px;
     height: 70px; */
     margin: 0 auto 1.5rem;
-    /* background: linear-gradient(45deg, var(--neon-blue), var(--cosmic-purple)); */
+    background: linear-gradient(45deg, var(--neon-blue), var(--cosmic-purple));
     border-radius: 50%;
     display: flex;
     align-items: center;
