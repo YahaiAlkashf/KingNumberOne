@@ -12,7 +12,7 @@ export default function ButtomTop() {
     return (
         <div style={{
             position: 'fixed',
-            bottom: '50px',
+            bottom: '30px',
             right: '30px',
             zIndex: 99999,
             display: 'flex',
