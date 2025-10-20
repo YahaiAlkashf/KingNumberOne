@@ -168,7 +168,7 @@ useEffect(() => {
   };
 
   window.addEventListener("scroll", handleScroll);
-  
+
   return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -243,7 +243,13 @@ useEffect(() => {
 
                             <h3 className="service-title">{currentLang === 'ar' ? service.name_ar : currentLang === 'en' ? service.name_en : service.name_tr }</h3>
                             <p className="service-description">{currentLang === 'ar' ? service.description_ar : currentLang === 'en' ? service.description_en  : service.description_tr  }</p>
-                            <a href="#" className="service-link">{t("اكتشف المزيد")} <i className="fas fa-arrow-left"></i></a>
+                        {socialLinks.map((link, index) => (
+                        <div>
+                         {link.platform === "whatsapp" && (
+                            <a href={link.url} target="_blank" className="service-link">{t("اكتشف المزيد")} <i className="fas fa-arrow-left"></i></a>
+                         )}
+                         </div>
+                        ))}
                         </div>
                         ))}
 
