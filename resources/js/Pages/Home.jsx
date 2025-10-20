@@ -234,7 +234,7 @@ useEffect(() => {
 
                             <h3 className="service-title">{currentLang === 'ar' ? service.name_ar : currentLang === 'en' ? service.name_en : service.name_tr }</h3>
                             <p className="service-description">{currentLang === 'ar' ? service.description_ar : currentLang === 'en' ? service.description_en  : service.description_tr  }</p>
-                            <a href="#" className="service-link">{t("اكتشف المزيد")} <i className="fas fa-arrow-left"></i></a>
+                            <a href="#projects" className="service-link">{t("اكتشف المزيد")} <i className="fas fa-arrow-left"></i></a>
                         </div>
                         ))}
 
@@ -269,7 +269,7 @@ useEffect(() => {
             </section>
 
             {/* projects section*/}
-<section className="projects py-20 ">
+<section className="projects py-20  " id="projects">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
             <h2 className="section-title text-4xl font-bold text-gray-800 dark:text-white mb-4">
@@ -320,9 +320,10 @@ useEffect(() => {
                             </p>
 
                             <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-                                <span className="inline-flex items-center text-primary text-sm font-medium">
-                                    {t("عرض المشروع")}
-                                    <i className="fas fa-arrow-left mr-2 text-xs transition-transform group-hover:-translate-x-1"></i>
+                                <span className="inline-flex items-center text-primary text-sm font-medium gap-2">
+                                    {project.project_url}
+                                    {/* <i className="fas fa-arrow-left mr-2 text-xs transition-transform group-hover:-translate-x-1"></i> */}
+                                    <i className="fas fa-external-link-alt mr-2 text-xs transition-transform group-hover:-translate-x-1"></i>
                                 </span>
                             </div>
                         </div>
